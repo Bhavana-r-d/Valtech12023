@@ -7,7 +7,7 @@
 <title>Department Details</title>
 </head>
 <body>
-<% Department dept=(Department) request.getAttribute("dept"); %>
+<% Department dept=(Department)  request.getAttribute("dept"); %>
 	<table>
 		<tr>
 			<td>ID</td>
