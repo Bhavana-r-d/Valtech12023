@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>
+            functionDemo page
+        </title>
+        <script language="javaScript">
+        function Vehicle(engine,wheels) {
+            this.hasEngine=engine || false;
+            this.hasWheels=wheels || false;
+            
+        }
+        function Car(make,model,hp){
+            this.make=make;
+            this.model=model;
+            this.hp=hp;
+
+        }
+        function showSpecs(){
+            alert(this.engine+" "+this.wheels+" "+this.make+" "+this.model+""+this.hp);
+        }
+
+        function proto(){
+            Car.prototype=new Vehicle(true,true);//prototypal inheritance
+            Car.prototype.displaySpecs=showSpecs;
+            var myPhantom=new Car("Rolls Royce","Ghost",750);
+            myPhantom.displaySpecs();
+
+
+            Vehicle.prototype.hasTrunk=true;
+            alert(myPhantom.hasTrunk);
+        }
+        proto();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

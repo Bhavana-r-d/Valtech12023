@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>
+          demo to open window
+        </title>
+        <script language="javaScript">
+    //  var winRef,tmr;
+    //  function delayedOpenWin(){
+    //     tmr=window.setTimeout(openWin,5000);
+    //  }
+    //  setTimeout();
+    //  clearTimeout(tmr);
+
+
+   
+    //  function delayedOpenWin(){
+    //     tmr=window.setTimeout(openWin,5000);
+    //  }
+    // document
+    //  function openWin(){
+    //     winRef=window.open(""," ","left=250,top=250,width=200,height=150");
+    //     winRef.document.open();
+    //     winRef.document.write("<h2>hello world!</h2>");
+    //     winRef.document.write(winRef.document.lastModified);
+    //     winRef.document.close();
+    //  }
+
+    // link
+    function openWin(){
+      document.links[0].href="http://www.duckduckgo.com";
+     }
+
+
+
+     function closeWin(){
+        winRef.close();
+     }
+        
+       
+        </script>
+    </head>
+    <body>
+        <h1>javaScript Demo</h1>
+        <a href="http://www.google.com">search</a>
+        <form>
+            <input type="button" name="btn1" id="btn1" value="open document" onclick="openWin()"><br/>
+
+
+            <input type="button" name="btn2" id="btn2" value="close document" onclick="closeWin()"><br/>
+        </form>
+
+    </body>
+</html>

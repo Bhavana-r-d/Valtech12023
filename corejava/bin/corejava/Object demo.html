@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>
+            js object demo
+        </title>
+        <script >
+        var manager, executive;
+        function employee(id,name,email){
+            this.empID=id;
+            this.empName=name;
+            this.empEmail;
+        }
+        function makeObject() {
+            manager=new employee('E101','joe','joe@gmail.com');
+            executive=new employee('E105','smita','smita@gmail.com');
+        }
+
+        // function makeObject() {
+        //     manager =new manager();
+        //     manager.id="E101";
+        //     manager.name="joe";
+        //     manager.email="joe@gmail.com";
+        //     manager.getObjectData=function(){
+        //         alert(manager.name+" "+ manager.email);
+        //     }
+
+            
+
+        //     executive=new executive();
+        //     executive.id="E105";
+        //     executive.name="smita";
+        //     executive.email="smita@gmail.com";
+        //     executive.getObjectData=function(){
+        //         alert( executive.name+" "+  executive.email);
+        //     }
+           
+        //     alert("objects created");   
+
+        // }
+        function getData(){
+            alert(manager.empName);
+            alert(executive.empName);
+            // executive.getObjectData();
+            // manager.getObjectData();
+        }
+       
+        </script>
+    </head>
+    <body>
+        <h1>JS Object Demo</h1>
+        <form>
+            <input  type="button" name="btn1" id="btn1" value="make objects" onclick="makeObject()">
+            <input  type="button" name="btn2" id="btn2" value="get objects" onclick="getData()">
+        </form>
+
+    </body>
+</html>

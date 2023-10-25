@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>
+            dateDemo page
+        </title>
+        <script>
+        function myClass() {
+           this.propertyTwo=2;
+           this.propertyThree=3;   
+           
+        }
+        var myInstance=new myClass();
+        alert(myInstance.propertyOne);
+        
+
+        myClass.prototype.propertyOne=1;
+        myInstance.propertyTwo=5;
+        alert(myInstance.propertyOne);
+        alert(myInstance.propertyTwo); 
+        Date.prototype.getDayName =function(){
+            var weekDays=['sun','mon','tue','wed','thu','fri','sat'];
+            return weekDays[this.getDay()]
+        }
+        function init(){
+            var dt=new Date();
+            alert(dt.getDayName());
+            
+        }
+        init();
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
