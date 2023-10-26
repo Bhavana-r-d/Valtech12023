@@ -41,7 +41,8 @@ public Point add(Point a, Point b) {
 	}
 @Override
 public Point sub(Point a, Point b) {
-	return a - b;}
+	return a - b;
+	}
 @Override
 public double distance(double a1, double b1) {
 	// TODO Auto-generated method stub

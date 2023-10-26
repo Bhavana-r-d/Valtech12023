@@ -33,7 +33,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<form action="dispDeptEmps" method="post" align="center">
+				<form action="deptByEmp" method="post">
 					<input type="submit" name="submit" value="First" /> <input
 						type="submit" name="submit" value="Previous" /> <input
 						type="submit" name="submit" value="Next" /> <input type="submit"

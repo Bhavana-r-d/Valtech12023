@@ -18,7 +18,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		ResultSet rs = ps.executeQuery();
 		List<Employee> emps = new ArrayList<>();
 		while(rs.next()) {
-			emps.add(mapRowToEmployeeWithoutID(rs));
+			emps.add(EmployeemapRowToEmployee(rs));
 		}
 		conn.close();
 //		System.out.println(emps.size());
