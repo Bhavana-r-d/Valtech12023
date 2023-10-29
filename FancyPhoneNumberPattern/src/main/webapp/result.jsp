@@ -8,22 +8,20 @@
     <link rel="stylesheet" type="text/css" href="result.css">
 </head>
 <body>
-    <h1>Fancy Phone Number Ranker Result</h1> <br><br>
+    <h1>Fancy Phone Number Ranker Result</h1>
+     
+    <p >Ranked Phone Numbers:</p>
    
-    <p>Ranked Phone Numbers:</p>
-   <br>
-   <br>
-   <form >
+ 
     <ol>
         <c:forEach items="${rankedPhoneNumbers}" var="phoneNumber">
             <li>${phoneNumber}</li>
         </c:forEach>
     </ol>
-   <br>
-   <br>
+   
    
     <p><a href="index.jsp">Go back</a></p>
-    </form>
+
     
 </body>
 </html>
