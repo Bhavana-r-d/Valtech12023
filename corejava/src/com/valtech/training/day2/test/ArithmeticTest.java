@@ -67,6 +67,13 @@ class ArithmeticTest {
 	@Test
 	void testSub() {
 //		fail("Not yet implemented");
+
+		assertEquals(-1, arithmetic.sub(2, 3));
+		assertEquals(1, arithmetic.sub(3, 2));
+		assertEquals(5, arithmetic.sub(5, 0));
+		assertEquals(-5, arithmetic.sub(-5, 0));
+		assertEquals(1, arithmetic.sub(-2, -3));
+		assertEquals(-11, arithmetic.sub(-8, 3));
 	}
 
 	@Test
@@ -85,54 +92,54 @@ class ArithmeticTest {
 		} catch (DivideByZeroException ex) {
 
 		}
-//		fail("Not yet implemented");
+
 	}
 
 	@Test
 	void testMul() {
+		assertEquals(10, arithmetic.mul(2, 5));
+		assertEquals(10, arithmetic.mul(-2, -5));
+		assertEquals(-10, arithmetic.mul(-2, 5));
+		assertEquals(-10, arithmetic.mul(2,- 5));
+		assertEquals(0, arithmetic.mul(2, 0));
+		assertEquals(0, arithmetic.mul(0, 5));
 
-//		fail("Not yet implemented");
 	}
-	
-	static Stream<Arguments> addArgsGenerator()
-	{
-		return Stream.of(
-				Arguments.of(1,2,3),
-				Arguments.of(-1,2,1),
-				Arguments.of(-1,-2,-3),
-				Arguments.of(1,-2,-1)
-		
-				);
+
+	static Stream<Arguments> addArgsGenerator() {
+		return Stream.of(Arguments.of(1, 2, 3), Arguments.of(-1, 2, 1), Arguments.of(-1, -2, -3),
+				Arguments.of(1, -2, -1)
+
+		);
 	}
-	@ParameterizedTest(name="add with csv {0}+{1}={2}")
-	@MethodSource(value= {"addArgsGenerator"})//this should be static
-	void testWithMethod(int a,int b,int c) {
-		assertEquals(c,arithmetic.add(a, b));
-	
+
+	@ParameterizedTest(name = "add with csv {0}+{1}={2}")
+	@MethodSource(value = { "addArgsGenerator" }) // this should be static
+	void testWithMethod(int a, int b, int c) {
+		assertEquals(c, arithmetic.add(a, b));
+
 	}
-	
-	
-	
-	@ParameterizedTest(name="add with csv {0}+{1}={2}")
-	@CsvFileSource(files= {"add.csv"})
-	void testWithCSVFile(int a,int b,int c) {
-		assertEquals(c,arithmetic.add(a, b));
-	
+
+	@ParameterizedTest(name = "add with csv {0}+{1}={2}")
+	@CsvFileSource(files = { "add.csv" })
+	void testWithCSVFile(int a, int b, int c) {
+		assertEquals(c, arithmetic.add(a, b));
+
 	}
-	
-	
-	@ParameterizedTest(name="add with csv {0}+{1}={2}")
-	@CsvSource(value= {"2,3,5", "-2,3,1", "5,-3,2", "-5,-6,-11" })
-	void testWithCSVParams(int a,int b,int c) {
-		assertEquals(c,arithmetic.add(a, b));
+
+	@ParameterizedTest(name = "add with csv {0}+{1}={2}")
+	@CsvSource(value = { "2,3,5", "-2,3,1", "5,-3,2", "-5,-6,-11" })
+	void testWithCSVParams(int a, int b, int c) {
+		assertEquals(c, arithmetic.add(a, b));
 	}
 
 	@ParameterizedTest(name = "Add with {0}") // allows to pass arguments
 	@ValueSource(strings = { "2,3,5", "-2,3,1", "5,-3,2", "-5,-6,-11" })
 	void testAddWithParams(String value) {
-		String [] parts=value.split(",");
-		List<Integer> values=Arrays.asList(parts).stream().map(it->Integer.parseInt(it)).collect(Collectors.toList());
-		assertEquals(values.get(2),arithmetic.add(values.get(0),values.get(1)));
+		String[] parts = value.split(",");
+		List<Integer> values = Arrays.asList(parts).stream().map(it -> Integer.parseInt(it))
+				.collect(Collectors.toList());
+		assertEquals(values.get(2), arithmetic.add(values.get(0), values.get(1)));
 
 	}
 }

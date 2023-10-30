@@ -14,7 +14,7 @@ public class CSSParser {
 		String fileName = "Styles.css"; 
 
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Bhavana.D\\Desktop\\style.css"));
+			BufferedReader br = new BufferedReader(new FileReader("C://Users/Bhavana.D/Desktop/style.css"));
 			String line;
 			Pattern classPattern = Pattern.compile("\\.(\\w+)\\s*\\{([^\\}]+)\\}");
 			Pattern intAttributePattern = Pattern.compile("\\s*(\\w+)\\s*:\\s*(\\d+)\\s*;");

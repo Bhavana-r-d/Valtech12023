@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class FancyPhoneNumber {
 
@@ -72,23 +71,23 @@ public class FancyPhoneNumber {
     }
 
     // Check if all digits in the phone number are the same
-    private static boolean isAllDigitsSame(String phoneNumber) {
+    public static boolean isAllDigitsSame(String phoneNumber) {
         return phoneNumber.matches("^(.)\\1*$");
     }
 
     // Check if the phone number is a palindrome
-    private static boolean isPalindrome(String phoneNumber) {
+    public static boolean isPalindrome(String phoneNumber) {
         String reversed = new StringBuilder(phoneNumber).reverse().toString();
         return phoneNumber.equals(reversed);
     }
 
     // Check if the phone number has at least one repeated digit
-    private static boolean hasRepeatedDigit(String phoneNumber) {
+    public static boolean hasRepeatedDigit(String phoneNumber) {
         return phoneNumber.matches(".*(\\d)\\1.*");
     }
 
     // Check if the phone number is in ascending order
-    private static boolean isAscendingOrder(String phoneNumber) {
+    public static boolean isAscendingOrder(String phoneNumber) {
         String sorted = phoneNumber.chars()
                 .sorted()
                 .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
@@ -97,7 +96,7 @@ public class FancyPhoneNumber {
     }
 
     // Check if the phone number is in descending order
-    private static boolean isDescendingOrder(String phoneNumber) {
+    public static boolean isDescendingOrder(String phoneNumber) {
         String sorted = phoneNumber.chars()
                 .boxed()
                 .sorted(Comparator.reverseOrder())
@@ -107,7 +106,7 @@ public class FancyPhoneNumber {
     }
 
     // Check if the phone number contains a consecutive sequence of numbers
-    private static boolean hasConsecutiveSequence(String phoneNumber) {
+    public static boolean hasConsecutiveSequence(String phoneNumber) {
         return phoneNumber.matches(".*0123456789.*");
     }
 

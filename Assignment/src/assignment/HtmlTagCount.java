@@ -33,12 +33,12 @@ public class HtmlTagCount {
                         String tag = line.substring(openIndex, closeIndex + 1);
  
                         if (tag.startsWith("</")) {
-                            // Closing tag
+                         
                             String openingTag = tagStack.pop();
                             System.out.println("Ending Tag: " + openingTag);
                             System.out.println("End Line: " + lineNumber);
                         } else {
-                            // Starting tag
+                         
                             System.out.println("Starting Tag: " + tag);
                             System.out.println("Start Line: " + lineNumber);
                             tagStack.push(tag);

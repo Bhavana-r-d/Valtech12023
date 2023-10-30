@@ -21,7 +21,7 @@ public class DocumentServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String paragraph = request.getParameter("paragraph");
-		String path = "C:\\Users\\Sneha.Vijapur\\TextProcessingDocumnet";
+		String path = "C:\\Users\\Bhavana.D\\TextProcessingDocumnet";
 
 		long timestamp = System.currentTimeMillis();
 		String filename = path + "processed_paragraph_" + timestamp + ".txt";
@@ -32,7 +32,7 @@ public class DocumentServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		// If u want to add some more stop words go ahead and add them
+		
 		HashSet<String> commonWords = new HashSet<>();
 		commonWords.add("is");
 		commonWords.add("i");
@@ -67,7 +67,7 @@ public class DocumentServlet extends HttpServlet {
 		commonWords.add("why");
 		String[] words = paragraph.split("\\s+");
 		for (int i = 0; i < words.length; i++) {
-			words[i] = words[i].replaceAll("[^a-zA-Z]", ""); // Remove non-alphabet characters
+			words[i] = words[i].replaceAll("[^a-zA-Z]", ""); 
 		}
 
 		Map<String, Integer> wordCountMap = new HashMap<>();
