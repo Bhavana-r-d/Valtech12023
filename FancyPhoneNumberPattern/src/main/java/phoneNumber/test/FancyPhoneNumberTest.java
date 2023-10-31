@@ -17,7 +17,7 @@ class FancyPhoneNumberTest {
 	@Test
 	public void testIsAllDigitsSame() {
 		assertTrue(FancyPhoneNumber.isAllDigitsSame("1111111"));
-		assertFalse(FancyPhoneNumber.isAllDigitsSame("1475756686"));
+		assertFalse(FancyPhoneNumber.isAllDigitsSame("123456"));
 	}
 	
 	@Test

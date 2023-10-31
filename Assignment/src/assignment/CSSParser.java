@@ -1,66 +1,44 @@
 package assignment;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CSSParser {
-	public static void main(String[] args) {
-		
-		String fileName = "Styles.css"; 
 
-		try {
-			BufferedReader br = new BufferedReader(new FileReader("C://Users/Bhavana.D/Desktop/style.css"));
-			String line;
-			Pattern classPattern = Pattern.compile("\\.(\\w+)\\s*\\{([^\\}]+)\\}");
-			Pattern intAttributePattern = Pattern.compile("\\s*(\\w+)\\s*:\\s*(\\d+)\\s*;");
-			Pattern colorAttributePattern = Pattern.compile("\\s*(\\w+)\\s*:\\s*#([0-9a-fA-F]{6})\\s*;");
-			Map<String, Map<String, String>> classAttributes = new HashMap<>();
+	public static Map<String, Map<String, String>> parseCSSContent(String cssContent) {
+		Pattern classPattern = Pattern.compile("\\.(\\w+)\\s*\\{([^\\}]+)\\}");
+		Pattern intAttributePattern = Pattern.compile("\\s*(\\w+)\\s*:\\s*(\\d+)\\s*;");
+		Pattern colorAttributePattern = Pattern.compile("\\s*(\\w+)\\s*:\\s*#([0-9a-fA-F]{6})\\s*;");
 
-			while ((line = br.readLine()) != null) {
-				Matcher classMatcher = classPattern.matcher(line);
-				while (classMatcher.find()) {
-					String className = classMatcher.group(1);
-					String attributesBlock = classMatcher.group(2);
-					Map<String, String> attributes = new HashMap<>();
+		Map<String, Map<String, String>> classAttributes = new HashMap<>();
 
-					Matcher intAttributeMatcher = intAttributePattern.matcher(attributesBlock);
-					while (intAttributeMatcher.find()) {
-						String attributeName = intAttributeMatcher.group(1);
-						String attributeValue = intAttributeMatcher.group(2);
-						attributes.put(attributeName, attributeValue);
-					}
-
-					Matcher colorAttributeMatcher = colorAttributePattern.matcher(attributesBlock);
-					while (colorAttributeMatcher.find()) {
-						String attributeName = colorAttributeMatcher.group(1);
-						String hexColor = colorAttributeMatcher.group(2);
-						String rgbColor = convertHexToRGB(hexColor);
-						attributes.put(attributeName, rgbColor);
-					}
-
-					classAttributes.put(className, attributes);
+		String[] lines = cssContent.split("\n");
+		for (String line : lines) {
+			Matcher classMatcher = classPattern.matcher(line);
+			while (classMatcher.find()) {
+				String className = classMatcher.group(1);
+				String attributesBlock = classMatcher.group(2);
+				Map<String, String> attributes = new HashMap<>();
+				Matcher intAttributeMatcher = intAttributePattern.matcher(attributesBlock);
+				while (intAttributeMatcher.find()) {
+					String attributeName = intAttributeMatcher.group(1);
+					String attributeValue = intAttributeMatcher.group(2);
+					attributes.put(attributeName, attributeValue);
 				}
-			}
-
-			// Display class selectors and their attributes
-			for (Map.Entry<String, Map<String, String>> entry : classAttributes.entrySet()) {
-				System.out.println("Class Selector: " + entry.getKey());
-				Map<String, String> attributes = entry.getValue();
-				for (Map.Entry<String, String> attributeEntry : attributes.entrySet()) {
-					System.out.println(attributeEntry.getKey() + ": " + attributeEntry.getValue());
+				Matcher colorAttributeMatcher = colorAttributePattern.matcher(attributesBlock);
+				while (colorAttributeMatcher.find()) {
+					String attributeName = colorAttributeMatcher.group(1);
+					String hexColor = colorAttributeMatcher.group(2);
+					String rgbColor = convertHexToRGB(hexColor);
+					attributes.put(attributeName, rgbColor);
 				}
-				System.out.println();
+				classAttributes.put(className, attributes);
 			}
-
-			br.close();
-		} catch (IOException e) {
-			e.printStackTrace();
 		}
+
+		return classAttributes;
 	}
 
 	private static String convertHexToRGB(String hexColor) {

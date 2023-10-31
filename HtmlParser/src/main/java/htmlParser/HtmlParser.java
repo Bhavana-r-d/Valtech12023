@@ -19,7 +19,7 @@ public class HtmlParser {
         Pattern startTagPattern = Pattern.compile("<([^/][^>]*)>");
         Pattern endTagPattern = Pattern.compile("</([^>]*)>");
 
-        int startTagCount = 0; // To count the start tags
+        int startTagCount = 0; 
 
         while ((line = reader.readLine()) != null) {
             lineCount++;
@@ -37,7 +37,7 @@ public class HtmlParser {
             }
         }
 
-        // Add the total start tag count to the result
+        
         result.add("Total Start Tags: " + startTagCount);
 
         return result;
