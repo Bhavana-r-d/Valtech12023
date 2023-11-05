@@ -10,7 +10,7 @@ public class FancyPhoneNumber {
 
     public static List<String> rankFancyPhoneNumbers(List<String> phoneNumbers) {
         List<PhoneNumberScore> fancyNumbers = new ArrayList<>();
-        List<PhoneNumberScore> nonFancyNumbers = new ArrayList();
+        List<PhoneNumberScore> nonFancyNumbers = new ArrayList<>();
 
         for (String phoneNumber : phoneNumbers) {
             int score = 0;
