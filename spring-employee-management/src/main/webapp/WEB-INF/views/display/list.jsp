@@ -10,6 +10,60 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Employee Display</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	color: #333;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+}
+
+th, td {
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: left;
+}
+
+th {
+	background-color: #f2f2f2;
+}
+
+td a {
+	text-decoration: none;
+	color: #3498db;
+}
+
+td a:hover {
+	text-decoration: underline;
+}
+
+tfoot {
+	background-color: #f2f2f2;
+}
+
+input[type="submit"] {
+	background-color: #4caf50;
+	color: #fff;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #45a049;
+}
+</style>
 </head>
 <body>
 	<h2>Department Display</h2>

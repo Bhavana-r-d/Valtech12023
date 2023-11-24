@@ -21,7 +21,7 @@ public class HomeController {
 		mv.addObject("name",myname);
 		mv.setViewName("home");
 		
-	
+	 
 		return mv;
 	}
 

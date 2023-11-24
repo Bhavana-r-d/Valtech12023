@@ -21,7 +21,7 @@ import com.valtech.springemployeemanagement.service.EmployeeDepartmentService;
 @RequestMapping(path = "/display")
 public class EmpDeptDisplayController {
 	@Autowired
-	private EmployeeDepartmentService employeeDepartmentService;
+	EmployeeDepartmentService employeeDepartmentService;
 	private List<Department> departments;
 	private DepartmentModel departmentModel;
 	private int currentId;
@@ -52,7 +52,7 @@ public class EmpDeptDisplayController {
 		if (!departments.isEmpty()) {
 			Department department = departments.get(employeeDepartmentService.getFirstId() - 1);
 			departmentModel = new DepartmentModel(department);
-			model.addAttribute("departments", departmentModel);
+			model.addAttribute("department", departmentModel);
 		}
 
 		model.addAttribute("employees", employeeDepartmentService.getAllEmployees().stream()
@@ -71,7 +71,7 @@ public class EmpDeptDisplayController {
 		if (!departments.isEmpty()) {
 			Department department = departments.get(employeeDepartmentService.getFirstId() - 1);
 			departmentModel = new DepartmentModel(department);
-			model.addAttribute("departments", departmentModel);
+			model.addAttribute("department", departmentModel);
 		}
 		model.addAttribute("employees", employeeDepartmentService.getAllEmployees().stream()
 				.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));
@@ -82,22 +82,26 @@ public class EmpDeptDisplayController {
 	public String listEmployee(Model model) {
 		model.addAttribute("employees", employeeDepartmentService.getAllEmployee().stream()
 				.map(employees -> new EmployeeModel(employees)).collect(Collectors.toList()));
-		DepartmentModel departmentModel = new DepartmentModel(
-				employeeDepartmentService.getDepartmentById(employeeDepartmentService.getFirstId()));
-		model.addAttribute("departments", departmentModel);
+		
+		
+		Department department = employeeDepartmentService.getDepartmentById(employeeDepartmentService.getFirstId());
+		departmentModel = new DepartmentModel(department);
+//		DepartmentModel departmentModel = new DepartmentModel(
+//				employeeDepartmentService.getDepartmentById(employeeDepartmentService.getFirstId()));
+		model.addAttribute("department", departmentModel);
 		return "display/list";
 
 	}
 
 	@PostMapping(path = "/list", params = "submit")
 	public String listEmployee(@RequestParam("submit") String submit, Model model) {
-
-		currentId = departmentModel != null ? departmentModel.getDeptId() : null;
+		currentId = departmentModel.getDeptId();
+		//currentId = departmentModel != null ? departmentModel.getDeptId() : null;
 
 		if (submit.equals("Last")) {
 			Department department = employeeDepartmentService.getDepartmentById(employeeDepartmentService.getLastId());
 			departmentModel = new DepartmentModel(department);
-			model.addAttribute("departments", departmentModel);
+			model.addAttribute("department", departmentModel);
 			model.addAttribute("employees",
 					employeeDepartmentService.getAllEmployeesByDepartment(departmentModel.getDeptId()).stream()
 							.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));
@@ -107,7 +111,7 @@ public class EmpDeptDisplayController {
 				Department department = employeeDepartmentService
 						.getDepartmentById(employeeDepartmentService.getPreviousId(currentId));
 				departmentModel = new DepartmentModel(department);
-				model.addAttribute("departmenst", departmentModel);
+				model.addAttribute("department", departmentModel);
 				model.addAttribute("employees",
 						employeeDepartmentService.getAllEmployeesByDepartment(departmentModel.getDeptId()).stream()
 								.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));
@@ -116,7 +120,7 @@ public class EmpDeptDisplayController {
 				Department department = employeeDepartmentService
 						.getDepartmentById(employeeDepartmentService.getLastId());
 				departmentModel = new DepartmentModel(department);
-				model.addAttribute("departments", departmentModel);
+				model.addAttribute("department", departmentModel);
 				model.addAttribute("employees",
 						employeeDepartmentService.getAllEmployeesByDepartment(departmentModel.getDeptId()).stream()
 								.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));
@@ -126,7 +130,7 @@ public class EmpDeptDisplayController {
 				Department department = employeeDepartmentService
 						.getDepartmentById(employeeDepartmentService.getNextId(currentId));
 				departmentModel = new DepartmentModel(department);
-				model.addAttribute("departments", departmentModel);
+				model.addAttribute("department", departmentModel);
 				model.addAttribute("employees",
 						employeeDepartmentService.getAllEmployeesByDepartment(departmentModel.getDeptId()).stream()
 								.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));
@@ -135,7 +139,7 @@ public class EmpDeptDisplayController {
 				Department department = employeeDepartmentService
 						.getDepartmentById(employeeDepartmentService.getFirstId());
 				departmentModel = new DepartmentModel(department);
-				model.addAttribute("departments", departmentModel);
+				model.addAttribute("department", departmentModel);
 				model.addAttribute("employees",
 						employeeDepartmentService.getAllEmployeesByDepartment(departmentModel.getDeptId()).stream()
 								.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));
@@ -143,7 +147,7 @@ public class EmpDeptDisplayController {
 		} else if (submit.equals("First")) {
 			Department department = employeeDepartmentService.getDepartmentById(employeeDepartmentService.getFirstId());
 			departmentModel = new DepartmentModel(department);
-			model.addAttribute("departments", departmentModel);
+			model.addAttribute("department", departmentModel);
 			model.addAttribute("employees",
 					employeeDepartmentService.getAllEmployeesByDepartment(departmentModel.getDeptId()).stream()
 							.map(employee -> new EmployeeModel(employee)).collect(Collectors.toList()));

@@ -30,7 +30,7 @@ public class DepartmentModel {
 	
 
 	public int getDeptId() {
-		return deptId;
+		return deptId; 
 	}
 
 	public void setDeptId(int deptId) {
